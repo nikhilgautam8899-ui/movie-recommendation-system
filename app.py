@@ -8,9 +8,9 @@ st.title("🎬 Hybrid Movie Recommendation System")
 
 @st.cache_data
 def load_data():
-    movies = pd.read_csv('ml-latest-small/movies.csv')
-    ratings = pd.read_csv('ml-latest-small/ratings.csv')
-    tags = pd.read_csv('ml-latest-small/tags.csv')
+    movies = pd.read_csv('movies.csv')
+    ratings = pd.read_csv('ratings.csv')
+    tags = pd.read_csv('tags.csv')
 
     tags_combined = tags.groupby('movieId')['tag'].apply(lambda x: ' '.join(x)).reset_index()
     movies = movies.merge(tags_combined, on='movieId', how='left')
